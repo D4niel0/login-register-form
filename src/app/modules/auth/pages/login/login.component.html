@@ -1,1 +1,153 @@
-<p>login works!</p>
+<div
+  class="login-box-container box w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-5xl relative"
+>
+  <div class="bg-white w-full relative">
+    <div class="login-content-container flex">
+      <!-- IMAGE -->
+      <div
+        class="login-dynamic-image-container z-10 hidden lg:block basis-3/5"
+      ></div>
+      <!-- IMAGE -->
+      <!-- MAIN LOGIN -->
+      <div
+        class="login-form-container mx-5 md:mx-9 lg:mx-11 grow basis-1/2 flex flex-col py-8 md:py-10 lg:py-12"
+      >
+        <!-- CONTENT FORM -->
+        <div class="login-form-content">
+          <div class="login-form-title pb-5 flex justify-center">
+            <span class="text-3xl font-color font-semibold">{{
+              "Inicia sesión"
+            }}</span>
+          </div>
+          <div class="login-form-actions">
+            <!-- FORM -->
+            <form
+              nz-form
+              [formGroup]="validateFormLog"
+              [nzLayout]="'vertical'"
+              (ngSubmit)="submitForm()"
+            >
+              <nz-form-item>
+                <nz-form-label nzFor="email">{{
+                  "Correo electrónico"
+                }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="emailErrorTpl">
+                  <input
+                    nz-input
+                    formControlName="email"
+                    id="email"
+                    [placeholder]="'Correo electrónico'"
+                  />
+                  <ng-template #emailErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      {{ "Ingrese su correo" }}
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('email')">
+                      {{ "Ingrese un correo válido" }}
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label nzFor="password">{{
+                  "Contraseña"
+                }}</nz-form-label>
+                <nz-form-control [nzErrorTip]="passwordErrorTpl">
+                  <div
+                    style="
+                      position: relative;
+                      display: flex;
+                      align-items: center;
+                    "
+                  >
+                    <input
+                      nz-input
+                      [type]="passwordVisible ? 'text' : 'password'"
+                      formControlName="password"
+                      id="password"
+                      placeholder="Contraseña"
+                      style="padding-right: 40px"
+                    />
+                    <i
+                      nz-icon
+                      [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                      (click)="togglePasswordVisibility()"
+                      class="eye-icon"
+                    ></i>
+                  </div>
+                  <ng-template #passwordErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      {{ "Ingrese su contraseña" }}
+                    </ng-container>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+              <div
+                class="login-form-action-buttons flex justify-between flex-wrap gap-5 mb-5"
+              >
+                <div class="flex-grow">
+                  <button
+                    nz-button
+                    nzBlock
+                    type="button"
+                    nzType="default"
+                    nzDanger
+                    [routerLink]="['/auth/register']"
+                  >
+                    {{ "Crear cuenta" }}
+                  </button>
+                </div>
+                <div class="flex-grow">
+                  <button
+                    nz-button
+                    nzBlock
+                    nzType="primary"
+                    nzDanger
+                    type="submit"
+                    [nzLoading]="isLoading"
+                  >
+                    {{ "Ingresar" }}
+                  </button>
+                </div>
+              </div>
+            </form>
+            <!-- END FORM -->
+          </div>
+          <!-- REMEMBER -->
+          <div class="form-remember-pass-container">
+            <a>
+              <span class="text-sm font-color-remember">{{
+                "¿Olvidaste tu contraseña?"
+              }}</span>
+            </a>
+          </div>
+          <!-- END REMEMBER -->
+        </div>
+        <!-- END CONTENT FORM -->
+        <!-- SOCIAL LOGIN -->
+        <div class="login-form-social-container pt-9">
+          <div
+            class="login-form-social-separator pb-7 flex items-center justify-center text-center"
+          >
+            <hr class="w-full hr-color" />
+            <span class="px-3 text-xs w-full whitespace-nowrap">{{
+              "o inicia sesión con"
+            }}</span>
+            <hr class="w-full hr-color" />
+          </div>
+          <div class="login-form-social-links flex justify-center mb-10">
+            <a class="w-9 mx-5">
+              <img src="assets/images/logo-facebook.png" alt="facebook" />
+            </a>
+            <a class="w-9 mx-5"
+              ><img src="assets/images/logo-google.png" alt="google"
+            /></a>
+          </div>
+        </div>
+        <!-- END SOCIAL LOGIN -->
+      </div>
+
+      <!-- END MAIN LOGIN -->
+    </div>
+  </div>
+</div>

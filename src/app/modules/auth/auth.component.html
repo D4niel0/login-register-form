@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<nz-layout>
+  <nz-content>
+    <div class="bg-log box min-h-screen overflow-y-auto">
+      <div class="container max-w-screen-2xl mx-auto relative">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>
