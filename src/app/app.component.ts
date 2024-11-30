@@ -7,8 +7,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   standalone: true,
   imports: [RouterOutlet, NzButtonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'my-base-project';
+  title = 'login-register-form';
 }
